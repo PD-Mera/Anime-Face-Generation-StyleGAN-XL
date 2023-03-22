@@ -28,3 +28,6 @@ tags
 *.pkl
 *.mp4
 *.pyc
+
+!feature_networks/clip/bpe_simple_vocab_16e6.txt.gz
+!in_embeddings/tf_efficientnet_lite0.pkl

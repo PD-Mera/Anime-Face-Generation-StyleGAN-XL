@@ -20,6 +20,8 @@ from tqdm import tqdm
 ROOT_DIR = "./data/animeface256cleaner/"
 TARGET_DIR = "./data/animeface256cleaner_combine/"
 
+os.makedirs(TARGET_DIR, exist_ok=True)
+
 for subset in tqdm(os.listdir(ROOT_DIR)):
     subfolder = os.path.join(ROOT_DIR, subset)
     for image in os.listdir(subfolder):
@@ -27,4 +29,3 @@ for subset in tqdm(os.listdir(ROOT_DIR)):
         save_path = subfolder + image
         save_path = save_path.replace(ROOT_DIR, TARGET_DIR)
         # os.rename(image_path, save_path)
-        print(1)

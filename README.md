@@ -4,12 +4,12 @@ This repo simply used StyleGAN-XL to generate anime faces
 
 ## Environments
 
-- Python 3.8.0
+- Python 3.8.10
 
-Install libraries
+Specify CUDA_VER in `setup_environments.sh` and run
 
 ``` bash
-bash setup_environments.txt
+bash setup_environments.sh
 ```
 
 ## Data Preparation
@@ -25,7 +25,7 @@ python dataset_tool.py --source=./data/animeface256cleaner_combine \
                        --transform=center-crop
 ```
 
-Create 64x64 dataset
+Create 64x64 dataset (For training stem)
 
 ``` bash
 python dataset_tool.py --source=./data/animeface256cleaner_combine \
@@ -34,9 +34,20 @@ python dataset_tool.py --source=./data/animeface256cleaner_combine \
                        --transform=center-crop
 ```
 
+## Training
+
+> Strategy from [here](https://github.com/autonomousvision/stylegan-xl#training)
+
+### Training the stem
+
+``` bash
+python train.py --outdir=./training-runs/af --cfg=stylegan3-t --data=./data/animeface64.zip \
+    --gpus=1 --batch=1 --mirror=1 --snap 10 --batch-gpu 1 --kimg 10000 --cbase 16384 --cmax 256 --syn_layers 7
+```
+
 ## Citation
 
-```
+``` bibtex
 @InProceedings{Sauer2021ARXIV,
   author    = {Axel Sauer and Katja Schwarz and Andreas Geiger},
   title     = {StyleGAN-XL: Scaling StyleGAN to Large Diverse Datasets},

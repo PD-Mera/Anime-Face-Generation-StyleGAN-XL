@@ -1,5 +1,14 @@
 click
+dill
+ftfy
 imageio
+ninja
+psutil
+regex
+requests
+scipy
+# tensorboard
+timm
 torch==1.9.0+cu111 
 torchvision==0.10.0+cu111
 tqdm
